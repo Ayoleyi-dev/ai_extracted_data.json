@@ -90,19 +90,19 @@ if __name__ == "__main__":
     INPUT_FILE = "ai_extracted_data.json"
     OUTPUT_FILE = "validation_report.csv"
     
-    print("🔍 Loading JSON data...")
+    print(" Loading JSON data...")
     try:
         data = load_json(INPUT_FILE)
     except Exception as e:
-        print(f"❌ Failed to load JSON: {e}")
+        print(f" Failed to load JSON: {e}")
         exit(1)
         
-    print("⚙️ Running validation pipeline...")
+    print(" Running validation pipeline...")
     report = validate_invoices(data)
     
     save_report(report, OUTPUT_FILE)
     
     valid = sum(1 for r in report if r["category"] == "VALID")
     flagged = sum(1 for r in report if r["category"] == "FLAGGED")
-    print(f"✅ VALID: {valid} | ⚠️ FLAGGED: {flagged}")
-    print(f"📄 Report saved to: {OUTPUT_FILE}")
+    print(f" VALID: {valid} |  FLAGGED: {flagged}")
+    print(f" Report saved to: {OUTPUT_FILE}")
