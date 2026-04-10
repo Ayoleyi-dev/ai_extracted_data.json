@@ -1,28 +1,27 @@
-# An Automated JSON Invoice Validator
+#  AI Document Extraction QA & Annotation Validator
 
 ## Overview
-A lightweight QA pipeline that validates AI-extracted document data. Simulates real-world enterprise data cleaning by performing field-level validation, type enforcement, and mathematical reconciliation on JSON invoice dumps.
+A lightweight validation pipeline built to mirror enterprise document annotation workflows. Simulates the review of AI-extracted JSON against source documents by performing field-by-field validation, verifying mathematical accuracy of line-item totals, and flagging schema/type discrepancies for manual correction.
 
-##  What It Checks
-- **Null/Missing Fields:** Flags empty or missing critical metadata
-- **Data Type Enforcement:** Catches strings where numerics/dates are expected
-- **Line-Item Math:** Verifies `quantity × unit_price == line_total` (with float tolerance)
-- **Total Reconciliation:** Ensures sum of line items matches `invoice_total`
+##  Validation Checks (Mapped to Role Requirements)
+- **JSON Schema & Field Compliance:** Flags missing, null, or empty required fields
+- **Data Type Enforcement:** Catches string/numeric mismatches (e.g., `"quantity": "five"`)
+- **Mathematical Accuracy:** Verifies `quantity × unit_price == line_total` with float tolerance
+- **Invoice Reconciliation:** Cross-checks line-item sums against `invoice_total`
+- **Error Logging:** Outputs a structured, annotation-ready CSV for rapid review & escalation
 
-## Stack
-- Python 3.x
-- Standard Libraries: `json`, `csv`, `datetime` (Zero external dependencies)
+##  Tech Stack
+- Python 3.x (Standard libraries only: `json`, `csv`, `datetime`)
+- Zero external dependencies → easily reproducible & lightweight
 
 ## How to Run
-1. Place `ai_extracted_data.json` and `validator.py` in the same directory.
+1. Ensure `ai_extracted_data.json` and `validator.py` are in the same directory
 2. Run: `python validator.py`
-3. Review the generated `validation_report.csv` for the structured error log.
+3. Review `validation_report.csv` for field-level error logs
 
-##  Sample Output
-| invoice_id | category | issue                                      |
-|------------|----------|--------------------------------------------|
-| INV-001    | VALID    | Passed all checks                          |
-| INV-002    | FLAGGED  | Missing/Empty required field: 'date'       |
-| INV-002    | FLAGGED  | Design Work: Invalid type for 'quantity'   |
-| INV-003    | FLAGGED  | Missing/Empty required field: 'client_name'|
-| INV-003    | FLAGGED  | Invoice total mismatch. Expected 500.00... |
+##  Why This Matters for Document Annotation
+This project demonstrates a working understanding of:
+- How AI extraction pipelines fail in production
+- The exact validation steps needed before human-in-the-loop annotation
+- How to systematically document edge cases, math errors, and schema mismatches
+- Translating manual QA workflows into repeatable, auditable processes
