@@ -1,0 +1,39 @@
+[
+  {
+    "invoice_id": "INV-001",
+    "date": "2025-10-15",
+    "client_name": "Acme Corp",
+    "line_items": [
+      {"item": "Consulting Hours", "quantity": 10, "unit_price": 150.00, "line_total": 1500.00},
+      {"item": "Software License", "quantity": 2, "unit_price": 299.99, "line_total": 599.98}
+    ],
+    "invoice_total": 2099.98
+  },
+  {
+    "invoice_id": "INV-002",
+    "date": null,
+    "client_name": "Beta Industries",
+    "line_items": [
+      {"item": "Design Work", "quantity": "eight", "unit_price": 75.00, "line_total": 600.00}
+    ],
+    "invoice_total": 600.00
+  },
+  {
+    "invoice_id": "INV-003",
+    "date": "2025-11-01",
+    "client_name": "",
+    "line_items": [
+      {"item": "Hardware", "quantity": 5, "unit_price": 120.00, "line_total": 500.00}
+    ],
+    "invoice_total": 650.00
+  },
+  {
+    "invoice_id": "INV-004",
+    "date": "2025-11-05",
+    "client_name": "Gamma LLC",
+    "line_items": [
+      {"item": "Support Retainer", "quantity": 3, "unit_price": 500.00, "line_total": 1500.00}
+    ],
+    "invoice_total": 1500.00
+  }
+]
